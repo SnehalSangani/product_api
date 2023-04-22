@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:product_api/screen/home/modal/home_model.dart';
 class Apihelper
 {
+  ProductModel productModel=ProductModel();
   Future<List> productapi()
   async {
     String link="https://apidatahub.000webhostapp.com/MyShop/API/products.php";
@@ -17,7 +18,7 @@ class Apihelper
     return productModel;
 
   }
-  Future<bool> create(String p1,String p2,String p3,String p4,String p5,String p6)
+  Future<String> create(String p1,String p2,String p3,String p4,String p5,String p6)
   async {
     String link="https://apidatahub.000webhostapp.com/MyShop/API/adddataapi.php";
     Uri uri =Uri.parse(link);
@@ -31,9 +32,9 @@ class Apihelper
     },);
     if(result.statusCode==200)
       {
-        return true;
+        return "success";
       }
-    return false;
+    return "failed";
 
   }
 

@@ -5,7 +5,7 @@ import 'package:product_api/utils/api_helper.dart';
 class Homeprovider extends ChangeNotifier
 {
   List<dynamic> product=[];
-  Future<List> productapicall()
+  Future<List<dynamic>> productapicall()
   async {
     Apihelper apihelper=Apihelper();
     List<dynamic> pmodal=await apihelper.productapi();
@@ -15,7 +15,7 @@ class Homeprovider extends ChangeNotifier
   Future<void> postapicall(p_name,p_rate,p_offer,p_desc,p_cate,p_price)
   async {
     Apihelper apihelper=Apihelper();
-    bool data=await apihelper.create(p_name,p_rate,p_offer,p_desc,p_cate,p_price);
+    String data=await apihelper.create(p_name,p_rate,p_offer,p_desc,p_cate,p_price);
     notifyListeners();
     if(data==true)
       {

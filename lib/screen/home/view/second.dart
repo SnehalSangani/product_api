@@ -13,11 +13,11 @@ class home extends StatefulWidget {
 class _homeState extends State<home> {
   Homeprovider? hptrue;
   Homeprovider? hpfalse;
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<Homeprovider>(context,listen: false).productapicall();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Provider.of<Homeprovider>(context,listen: false).productapicall();
+  // }
   @override
   Widget build(BuildContext context) {
     hpfalse=Provider.of<Homeprovider>(context,listen: false);
@@ -41,6 +41,7 @@ class _homeState extends State<home> {
             return ListView.builder(itemBuilder: (context, index) {
               return ListTile(
                 title: Text("${hpfalse!.product[index].p_name}"),
+                subtitle: Text("${hpfalse!.product[index].p_rate}"),
               );
 
             },itemCount: productModel!.length,);
