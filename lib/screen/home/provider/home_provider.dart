@@ -12,19 +12,12 @@ class Homeprovider extends ChangeNotifier
     product=pmodal;
     return product;
   }
-  Future<void> postapicall(p_name,p_rate,p_offer,p_desc,p_cate,p_price)
+  Future<String> postapicall(p_name,p_rate,p_offer,p_desc,p_cate,p_price)
   async {
     Apihelper apihelper=Apihelper();
     String data=await apihelper.create(p_name,p_rate,p_offer,p_desc,p_cate,p_price);
     notifyListeners();
-    if(data==true)
-      {
-        print("success");
-      }
-    else
-      {
-        print("fail");
-      }
+    return data;
   }
 
 }

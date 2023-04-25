@@ -27,7 +27,16 @@ class _homeState extends State<home> {
         backgroundColor: Colors.black,
         centerTitle: true,
         title: Text("Product API"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'second');
+            },
+            icon: Icon(Icons.add),
+          ),
+        ],
       ),
+      backgroundColor: Colors.grey.shade400,
       body: FutureBuilder(
         future: hpfalse!.productapicall(),
         builder: (context, snapshot) {
@@ -39,9 +48,21 @@ class _homeState extends State<home> {
           {
             List<dynamic>? productModel = snapshot.data;
             return ListView.builder(itemBuilder: (context, index) {
-              return ListTile(
-                title: Text("${hpfalse!.product[index].p_name}"),
-                subtitle: Text("${hpfalse!.product[index].p_rate}"),
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 70,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(width: 1,color: Colors.black)
+                  ),
+                  child: ListTile(
+                    title: Text("${hpfalse!.product[index].p_name}"),
+                    subtitle: Text("${hpfalse!.product[index].p_rate}"),
+                    trailing: Text("${hpfalse!.product[index].p_price}"),
+                  ),
+                ),
               );
 
             },itemCount: productModel!.length,);
